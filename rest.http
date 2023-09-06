@@ -1,0 +1,18 @@
+
+## Categories Routes...........
+GET http://localhost:5000/categories
+
+### Creating a Category
+POST http://localhost:5000/categories
+
+### Get a category by id
+GET http://localhost:5000/categories/id
+
+### Update a category by id
+PATCH  http://localhost:5000/categories/id
+
+### Delete a category by id
+DELETE  http://localhost:5000/categories/id
+
+###
+GET http://localhost:5000/
