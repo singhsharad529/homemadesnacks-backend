@@ -3,7 +3,7 @@ const createError = require('http-errors');
 const dotenv = require('dotenv').config();
 
 const app = express();
-const CategoryRoute = require("./Routes/category-routes");
+const CategoryRoute = require("./routes/category-routes");
 
 
 //Initialize DB
