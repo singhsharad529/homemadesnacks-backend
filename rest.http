@@ -4,15 +4,27 @@ GET http://localhost:5000/categories
 
 ### Creating a Category
 POST http://localhost:5000/categories
+Content-Type: application/json
+
+{
+    "name":"forien food",
+    "description":"West Indian food is very tasty"
+}
 
 ### Get a category by id
-GET http://localhost:5000/categories/id
+GET http://localhost:5000/categories/64f9a518292d0b5697fa7003
 
 ### Update a category by id
-PATCH  http://localhost:5000/categories/id
+PATCH  http://localhost:5000/categories/64f9a518292d0b5697fa7003
+Content-Type: application/json
+
+{   "name":"Chinese",
+    "description":"Chinese Food"
+}
+
 
 ### Delete a category by id
-DELETE  http://localhost:5000/categories/id
+DELETE  http://localhost:5000/categories/64f9a518292d0b5697fa7003
 
-###
+### Invalid Url
 GET http://localhost:5000/
