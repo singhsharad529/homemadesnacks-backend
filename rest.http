@@ -7,7 +7,7 @@ POST http://localhost:5000/categories
 Content-Type: application/json
 
 {
-    "name":"forien food",
+    "name":"test food",
     "description":"West Indian food is very tasty"
 }
 
@@ -24,7 +24,35 @@ Content-Type: application/json
 
 
 ### Delete a category by id
-DELETE  http://localhost:5000/categories/64f99d602dfdc7b5cab6519e
+DELETE  http://localhost:5000/categories/64f9ea4ab762c8beab8ae63d
 
 ### Invalid Url
 GET http://localhost:5000/
+
+
+## Recipes Routes...........
+### Get all recipe of a specific category
+GET http://localhost:5000/recipes/South-Indian-Food
+
+### Creating a recipe
+POST http://localhost:5000/recipes/South-Indian-Food
+Content-Type: application/json
+
+{
+    "name":"Noodles",
+    "imageUrl":"/images",
+    "description":"Dosa is a popular South Indian dish known for its thin, crispy texture and delicious flavor. It is a type of savory pancake or crepe made from a fermented batter primarily consisting of rice and urad dal (black gram lentils).",
+    "rating":3,
+    "c_id":"64f998474cf3de0e7464be52",
+    "category":"Chinese",
+    "ratingCount":10,
+    "isVeg":true,
+    "ingredients":"test food",
+    "videoLink":"Rice, Urad Dal (Black Gram Lentils), Fenugreek Seeds, Water, Salt",
+    "tags":"Dosa, South Indian, Indian Cuisine, Crepe, Pancake, Fermented Batter, Rice, Urad Dal, Fenugreek Seeds, Breakfast, Vegetarian, Masala Dosa, Cooking, Food, Culinary",
+    "recipeMethod":"Wash and soak rice, urad dal, and fenugreek seeds in water for at least 4-6 hours.Drain the soaked ingredients and grind them into a smooth batter, adding water as needed.Add salt to the batter and mix well.Allow the batter to ferment for 6-8 hours or overnight, depending on the climate.Heat a non-stick skillet or griddle and grease it lightly with oil or ghee.Pour a ladleful of batter onto the hot skillet and spread it into a thin, circular shape.Cook until the dosa turns golden brown and crispy on one side.Optionally, flip the dosa and cook briefly on the other side.Remove from the skillet and serve hot with chutney, sambar, or your choice of filling."
+    
+}
+
+### Geting a single recipe by id
+GET http://localhost:5000/recipes/about-recipe/64f9f7e069ce1ce1cd6f6b56
