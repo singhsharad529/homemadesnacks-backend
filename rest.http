@@ -30,6 +30,8 @@ DELETE  http://localhost:5000/categories/64f9ea4ab762c8beab8ae63d
 GET http://localhost:5000/
 
 
+
+
 ## Recipes Routes...........
 ### Get all recipe of a specific category
 GET http://localhost:5000/recipes/South-Indian-Food
@@ -56,3 +58,29 @@ Content-Type: application/json
 
 ### Geting a single recipe by id
 GET http://localhost:5000/recipes/about-recipe/64f9f7e069ce1ce1cd6f6b56
+
+
+### update a recipe
+PATCH http://localhost:5000/recipes/about-recipe/64f9f84a69ce1ce1cd6f6b59
+Content-Type: application/json
+
+{
+    "name": "Mendu Wada",
+    "imageUrl": "/Mendu-wada"
+
+}
+
+### delete a recipe
+DELETE http://localhost:5000/recipes/about-recipe/64f9f84a69ce1ce1cd6f6b59
+
+### delete all recipe having a given c_idc(category)
+DELETE http://localhost:5000/recipes/about-recipe/delete-all-recipe-by-category/64f998474cf3de0e7464be52
+
+### update all recipe's category details by c_id
+PATCH http://localhost:5000/recipes/about-recipe/update-all-recipe-by-category/64f998474cf3de0e7464be52
+Content-Type: application/json
+
+{
+    "category": "North Indian"
+
+}
