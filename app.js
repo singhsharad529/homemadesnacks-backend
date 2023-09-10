@@ -1,6 +1,7 @@
 const express = require("express");
 const createError = require("http-errors");
 const dotenv = require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
 const CategoryRoute = require("./routes/category-routes");
@@ -10,6 +11,7 @@ const RecipeRoute = require("./routes/recipe-routes");
 require("./initDB")();
 
 //Middleware for parsing
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
