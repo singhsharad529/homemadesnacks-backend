@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### Get a category by id
-GET http://localhost:5000/categories/64f975d7734b5534200613ba
+GET http://localhost:5000/categories/64fddd41cd4767c497b359f2
 
 ### Update a category by id
 PATCH  http://localhost:5000/categories/64f9a518292d0b5697fa7003
@@ -34,21 +34,21 @@ GET http://localhost:5000/
 
 ## Recipes Routes...........
 ### Get all recipe of a specific category
-GET http://localhost:5000/recipes/South-Indian-Food
+GET http://localhost:5000/recipes/Chinese
 
 ### Creating a recipe
 POST http://localhost:5000/recipes/South-Indian-Food
 Content-Type: application/json
 
 {
-    "name":"Noodles",
+    "name":"Chilli Chicken",
     "imageUrl":"/images",
-    "description":"Dosa is a popular South Indian dish known for its thin, crispy texture and delicious flavor. It is a type of savory pancake or crepe made from a fermented batter primarily consisting of rice and urad dal (black gram lentils).",
+    "description":"fish is a popular South Indian dish known for its thin, crispy texture and delicious flavor. It is a type of savory pancake or crepe made from a fermented batter primarily consisting of rice and urad dal (black gram lentils).",
     "rating":3,
-    "c_id":"64f998474cf3de0e7464be52",
+    "c_id":"64fddd41cd4767c497b359f2",
     "category":"Chinese",
     "ratingCount":10,
-    "isVeg":true,
+    "isVeg":false,
     "ingredients":"test food",
     "videoLink":"Rice, Urad Dal (Black Gram Lentils), Fenugreek Seeds, Water, Salt",
     "tags":"Dosa, South Indian, Indian Cuisine, Crepe, Pancake, Fermented Batter, Rice, Urad Dal, Fenugreek Seeds, Breakfast, Vegetarian, Masala Dosa, Cooking, Food, Culinary",

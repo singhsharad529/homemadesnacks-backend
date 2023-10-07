@@ -20,7 +20,7 @@ const getAllRecipes = async (req, res, next) => {
 const addSingleRecipe = async (req, res, next) => {
   try {
     console.log(req.params);
-    console.log(req.body);
+    // console.log(req.body);
     const recipe = new Recipe(req.body);
     const result = await recipe.save();
     res.send(result);
@@ -75,7 +75,7 @@ const updateRecipe = async (req, res, next) => {
 //update a single recipe by id
 const updateRecipesCategory = async (req, res, next) => {
   try {
-    const c_id = req.params.c_id
+    const c_id = req.params.c_id;
     const updates = req.body;
     const options = { new: true };
     const result = await Recipe.updateMany({ c_id: c_id }, updates, options);
@@ -114,7 +114,6 @@ const deleteRecipe = async (req, res, next) => {
   }
 };
 
-
 //delete all recipe of a category(by c_id)
 const deleteAllRecipeByC = async (req, res, next) => {
   const c_id = req.params.c_id;
@@ -136,4 +135,12 @@ const deleteAllRecipeByC = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRecipes, addSingleRecipe, singleRecipe, updateRecipe, deleteRecipe, deleteAllRecipeByC, updateRecipesCategory };
+module.exports = {
+  getAllRecipes,
+  addSingleRecipe,
+  singleRecipe,
+  updateRecipe,
+  deleteRecipe,
+  deleteAllRecipeByC,
+  updateRecipesCategory,
+};
