@@ -34,25 +34,25 @@ GET http://localhost:5000/
 
 ## Recipes Routes...........
 ### Get all recipe of a specific category
-GET http://localhost:5000/recipes/Chinese
+GET http://localhost:5000/recipes/South Indian
 
 ### Creating a recipe
-POST http://localhost:5000/recipes/South-Indian-Food
+POST http://localhost:5000/recipes/South Indian
 Content-Type: application/json
 
 {
-    "name":"Chilli Chicken",
+    "name":"Uttapam",
     "imageUrl":"/images",
-    "description":"fish is a popular South Indian dish known for its thin, crispy texture and delicious flavor. It is a type of savory pancake or crepe made from a fermented batter primarily consisting of rice and urad dal (black gram lentils).",
+    "description":"Uttapam is a popular South Indian breakfast or snack dish that is both delicious and wholesome. It is a type of dosa, but with a slightly thicker and spongy texture.",
     "rating":3,
-    "c_id":"64fddd41cd4767c497b359f2",
-    "category":"Chinese",
+    "c_id":"64fddd21cd4767c497b359f0",
+    "category":"South Indian",
     "ratingCount":10,
-    "isVeg":false,
-    "ingredients":"test food",
+    "isVeg":true,
+    "ingredients":"1 cup rice*1/4 cup urad dal (black gram)*1/2 teaspoon fenugreek seeds*Salt to taste*Water for grinding*1/2 cup finely chopped onions*1/4 cup finely chopped tomatoes*2-3 green chilies, finely chopped*2 tablespoons chopped fresh coriander leaves*Cooking oil or ghee for making uttapam",
     "videoLink":"Rice, Urad Dal (Black Gram Lentils), Fenugreek Seeds, Water, Salt",
     "tags":"Dosa, South Indian, Indian Cuisine, Crepe, Pancake, Fermented Batter, Rice, Urad Dal, Fenugreek Seeds, Breakfast, Vegetarian, Masala Dosa, Cooking, Food, Culinary",
-    "recipeMethod":"Wash and soak rice, urad dal, and fenugreek seeds in water for at least 4-6 hours.Drain the soaked ingredients and grind them into a smooth batter, adding water as needed.Add salt to the batter and mix well.Allow the batter to ferment for 6-8 hours or overnight, depending on the climate.Heat a non-stick skillet or griddle and grease it lightly with oil or ghee.Pour a ladleful of batter onto the hot skillet and spread it into a thin, circular shape.Cook until the dosa turns golden brown and crispy on one side.Optionally, flip the dosa and cook briefly on the other side.Remove from the skillet and serve hot with chutney, sambar, or your choice of filling."
+    "recipeMethod":"Soak rice, urad dal, and fenugreek seeds for 4-5 hours and poha for 10-15 minutes.*Grind rice, urad dal, and poha separately into smooth batters.*Mix the batters together, add salt, and let it ferment for 6-8 hours.*Heat a greased griddle and pour batter, spreading it into a thick pancake.*Sprinkle onions, tomatoes, green chilies, and coriander on top.*Cook with a lid on until the bottom turns golden brown.*Optionally flip and cook the other side.*Serve hot with chutney or sambar."
     
 }
 
@@ -61,12 +61,12 @@ GET http://localhost:5000/recipes/about-recipe/64f9f7e069ce1ce1cd6f6b56
 
 
 ### update a recipe
-PATCH http://localhost:5000/recipes/about-recipe/64f9f84a69ce1ce1cd6f6b59
+PATCH http://localhost:5000/recipes/about-recipe/65329cdce76bb1b3f6997f69
 Content-Type: application/json
 
 {
-    "name": "Mendu Wada",
-    "imageUrl": "/Mendu-wada"
+    "name": "Idli",
+    "imageUrl": "/idli"
 
 }
 
