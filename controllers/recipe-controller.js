@@ -1,14 +1,16 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const Recipe = require("../models/recipe-model");
+const Category = require("../models/category-model");
 
-//getting all recipe list
+
+//getting all recipe list by category Id
 const getAllRecipes = async (req, res, next) => {
   try {
-    const splitStrings = req.params.category.split("-");
-    const searchString = splitStrings.join(" ");
 
-    const results = await Recipe.find({ category: searchString });
+    const { categoryId } = req.params;
+
+    const results = await Recipe.find({ c_id: categoryId }, { __v: 0 });
     res.send(results);
   } catch (error) {
     console.log("Error while getting all recipe : ", error.message);
@@ -19,9 +21,13 @@ const getAllRecipes = async (req, res, next) => {
 //add a recipe by category id and category name
 const addSingleRecipe = async (req, res, next) => {
   try {
-    console.log(req.params);
-    // console.log(req.body);
-    const recipe = new Recipe(req.body);
+    const { categoryId } = req.params;
+    const categoryDetails = await Category.findById(categoryId);
+
+    const newRecipe = req.body
+    newRecipe.category = categoryDetails.name;
+    newRecipe.c_id = categoryId;
+    const recipe = new Recipe(newRecipe);
     const result = await recipe.save();
     res.send(result);
   } catch (error) {
@@ -37,12 +43,9 @@ const addSingleRecipe = async (req, res, next) => {
 
 //getting a recipe
 const singleRecipe = async (req, res, next) => {
-  console.log("starting");
-
   try {
-    const id = req.params.id;
-    console.log(id);
-    const results = await Recipe.findById(id);
+    const { id } = req.params;
+    const results = await Recipe.findById(id, { __v: 0 });
     res.send(results);
   } catch (error) {
     console.log("Error while getting single recipe : ", error.message);
@@ -57,28 +60,6 @@ const updateRecipe = async (req, res, next) => {
     const updates = req.body;
     const options = { new: true };
     const result = await Recipe.findByIdAndUpdate(id, updates, options);
-    if (!result) {
-      next(createError(404, "Recipe does not exist"));
-      return;
-    }
-    res.send(result);
-  } catch (error) {
-    console.log("Error while recipe a single category: ", error.message);
-    if (error instanceof mongoose.CastError) {
-      next(createError(400, "Invalid Recipe id"));
-      return;
-    }
-    next(error);
-  }
-};
-
-//update a single recipe by id
-const updateRecipesCategory = async (req, res, next) => {
-  try {
-    const c_id = req.params.c_id;
-    const updates = req.body;
-    const options = { new: true };
-    const result = await Recipe.updateMany({ c_id: c_id }, updates, options);
     if (!result) {
       next(createError(404, "Recipe does not exist"));
       return;
@@ -142,5 +123,4 @@ module.exports = {
   updateRecipe,
   deleteRecipe,
   deleteAllRecipeByC,
-  updateRecipesCategory,
 };

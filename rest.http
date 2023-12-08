@@ -7,24 +7,24 @@ POST http://localhost:5000/categories
 Content-Type: application/json
 
 {
-    "name":"Parathe",
+    "name":"test category",
     "description":"Flaky, stuffed flatbreads fried to perfection, a beloved North Indian cuisine staple with various delicious fillings."
 }
 
 ### Get a category by id
-GET http://localhost:5000/categories/64fddd41cd4767c497b359f2
+GET http://localhost:5000/categories/64fddd21cd4767c497b359f0
 
 ### Update a category by id
-PATCH  http://localhost:5000/categories/64f9a518292d0b5697fa7003
+PATCH  http://localhost:5000/categories/657369bbb3d5087c63eaddd5
 Content-Type: application/json
 
-{   "name":"Chinese",
-    "description":"Chinese Food"
+{   "name":"test category 1"
+   
 }
 
 
 ### Delete a category by id
-DELETE  http://localhost:5000/categories/64f975d7734b5534200613ba
+DELETE  http://localhost:5000/categories/65736c2b796908f342769ac5
 
 ### Invalid Url
 GET http://localhost:5000/
@@ -33,20 +33,18 @@ GET http://localhost:5000/
 
 
 ## Recipes Routes...........
-### Get all recipe of a specific category
-GET http://localhost:5000/recipes/South Indian
+### Get all recipe of a specific category(category id)
+GET http://localhost:5000/recipes/category/65736c2b796908f342769ac5
 
-### Creating a recipe
-POST http://localhost:5000/recipes/South Indian
+### Creating a recipe with a category details
+POST http://localhost:5000/recipes/65736c2b796908f342769ac5
 Content-Type: application/json
 
 {
-    "name":"Uttapam",
+    "name":"test recipe 1",
     "imageUrl":"/images",
     "description":"Uttapam is a popular South Indian breakfast or snack dish that is both delicious and wholesome. It is a type of dosa, but with a slightly thicker and spongy texture.",
     "rating":3,
-    "c_id":"64fddd21cd4767c497b359f0",
-    "category":"South Indian",
     "ratingCount":10,
     "isVeg":true,
     "ingredients":"1 cup rice*1/4 cup urad dal (black gram)*1/2 teaspoon fenugreek seeds*Salt to taste*Water for grinding*1/2 cup finely chopped onions*1/4 cup finely chopped tomatoes*2-3 green chilies, finely chopped*2 tablespoons chopped fresh coriander leaves*Cooking oil or ghee for making uttapam",
@@ -56,31 +54,20 @@ Content-Type: application/json
     
 }
 
-### Geting a single recipe by id
-GET http://localhost:5000/recipes/about-recipe/64f9f7e069ce1ce1cd6f6b56
-
+### Geting a single recipe by recipe id
+GET http://localhost:5000/recipes/653299f0e76bb1b3f6997f67
 
 ### update a recipe
-PATCH http://localhost:5000/recipes/about-recipe/65329cdce76bb1b3f6997f69
+PATCH http://localhost:5000/recipes/653299f0e76bb1b3f6997f67
 Content-Type: application/json
 
 {
-    "name": "Idli",
-    "imageUrl": "/idli"
+    "name": "Masala Dosa",
+    "imageUrl": "/Masala Dosa"
 
 }
 
-### delete a recipe
+### delete a recipe by recipe id
 DELETE http://localhost:5000/recipes/about-recipe/64f9f84a69ce1ce1cd6f6b59
 
-### delete all recipe having a given c_idc(category)
-DELETE http://localhost:5000/recipes/about-recipe/delete-all-recipe-by-category/64f998474cf3de0e7464be52
-
-### update all recipe's category details by c_id
-PATCH http://localhost:5000/recipes/about-recipe/update-all-recipe-by-category/64f998474cf3de0e7464be52
-Content-Type: application/json
-
-{
-    "category": "North Indian"
-
-}
+ 
