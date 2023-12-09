@@ -6,9 +6,13 @@ const cors = require("cors");
 const app = express();
 const CategoryRoute = require("./routes/category-routes");
 const RecipeRoute = require("./routes/recipe-routes");
+const ImageRoute = require("./routes/image-route");
 
 //Initialize DB
 require("./initDB")();
+
+// set the view engine to ejs
+app.set("view engine", "ejs");
 
 //Middleware for parsing
 app.use(cors());
@@ -16,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
+app.use("/image-upload", ImageRoute);
 app.use("/categories", CategoryRoute);
 app.use("/recipes", RecipeRoute);
 
