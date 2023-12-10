@@ -1,6 +1,8 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const Category = require("../models/category-model");
+const Recipe = require("../models/recipe-model");
+
 
 //getting all categories list
 const getAllCategories = async (req, res, next) => {
@@ -32,7 +34,8 @@ const addSingleCategory = async (req, res, next) => {
 
   //using try and catch
   try {
-    const category = new Category(req.body);
+    const newCategory = req.body;
+    const category = new Category(newCategory);
     const result = await category.save();
     res.send(result);
   } catch (error) {
@@ -48,9 +51,9 @@ const addSingleCategory = async (req, res, next) => {
 
 //getting a single category
 const singleCategory = async (req, res, next) => {
-  const id = req.params.id;
+  const categoryId = req.params.id;
   try {
-    const category = await Category.findById(id);
+    const category = await Category.findById(categoryId);
     if (!category) {
       throw createError("Category does not exist");
     }
@@ -68,13 +71,20 @@ const singleCategory = async (req, res, next) => {
 //update a single category by id
 const updateCategory = async (req, res, next) => {
   try {
-    const id = req.params.id;
+
+    const categoryId = req.params.id;
     const updates = req.body;
     const options = { new: true };
-    const result = await Category.findByIdAndUpdate(id, updates, options);
+    //updating category info
+    const result = await Category.findByIdAndUpdate(categoryId, updates, options);
     if (!result) {
       next(createError(404, "Category does not exist"));
       return;
+    }
+
+    // updating category name in all the recipe
+    if (req.body.name) {
+      const updateRecipe = await Recipe.updateMany({}, { $set: { "category": req.body.name } })
     }
     res.send(result);
   } catch (error) {
@@ -89,9 +99,14 @@ const updateCategory = async (req, res, next) => {
 
 //delete a category by id
 const deleteCategory = async (req, res, next) => {
-  const id = req.params.id;
+  const categoryId = req.params.id;
   try {
-    const result = await Category.findByIdAndDelete(id);
+
+    //deleting all recipe of a given category
+    const deleteRecipes = await Recipe.deleteMany({ "c_id": categoryId })
+
+    //deleting a category by category id
+    const result = await Category.findByIdAndDelete(categoryId);
     if (!result) {
       next(createError(404, "Category does not exist"));
       return;
