@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 
 const app = express();
+const path = require("path");
 const CategoryRoute = require("./routes/category-routes");
 const RecipeRoute = require("./routes/recipe-routes");
 const ImageRoute = require("./routes/image-route");
@@ -18,6 +19,8 @@ app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Static Middleware
+app.use(express.static(path.join(__dirname, "public")));
 
 //routes
 app.use("/image-upload", ImageRoute);
