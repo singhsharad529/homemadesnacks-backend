@@ -15,10 +15,11 @@ Content-Type: application/json
 GET http://localhost:5000/categories/64fddd21cd4767c497b359f0
 
 ### Update a category by id
-PATCH  http://localhost:5000/categories/657369bbb3d5087c63eaddd5
+PATCH  http://localhost:5000/categories/64fddd21cd4767c497b359f0
 Content-Type: application/json
 
-{   "name":"test category 1"
+{   
+    "name":"South Indian"
    
 }
 
@@ -34,7 +35,7 @@ GET http://localhost:5000/
 
 ## Recipes Routes...........
 ### Get all recipe of a specific category(category id)
-GET http://localhost:5000/recipes/category/65736c2b796908f342769ac5
+GET http://localhost:5000/recipes/category/64fddd21cd4767c497b359f0
 
 ### Creating a recipe with a category details
 POST http://localhost:5000/recipes/65736c2b796908f342769ac5
@@ -54,10 +55,10 @@ Content-Type: application/json
     
 }
 
-### Geting a single recipe by recipe id
+### Getting a single recipe by recipe id
 GET http://localhost:5000/recipes/653299f0e76bb1b3f6997f67
 
-### update a recipe
+### update a recipe by recipe id
 PATCH http://localhost:5000/recipes/653299f0e76bb1b3f6997f67
 Content-Type: application/json
 
