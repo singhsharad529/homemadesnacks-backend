@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 const Recipe = require("../models/recipe-model");
 const Category = require("../models/category-model");
 
-
 //getting all recipe list by category Id
 const getAllRecipes = async (req, res, next) => {
   try {
-
     const { categoryId } = req.params;
 
     const results = await Recipe.find({ c_id: categoryId }, { __v: 0 });
@@ -24,7 +22,7 @@ const addSingleRecipe = async (req, res, next) => {
     const { categoryId } = req.params;
     const categoryDetails = await Category.findById(categoryId);
 
-    const newRecipe = req.body
+    const newRecipe = req.body;
     newRecipe.category = categoryDetails.name;
     newRecipe.c_id = categoryId;
     const recipe = new Recipe(newRecipe);

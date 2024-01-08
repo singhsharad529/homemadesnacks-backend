@@ -7,6 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+    <style>
+        #category-upload-block{
+            display: none;
+        }
+    </style>
 <body>
 
     <div class="container text-center p-2">
@@ -21,29 +26,31 @@
                 <option value="recipes">Recipe</option>
             </select>
         <!-- </form> -->
+        
+        <!-- action="/image-upload/upload-testing" -->
+        <div id="category-upload-block">
+            <form id="categoryUpdateForm" method="post" class="container-fluid p-5" enctype="multipart/form-data" onsubmit="uploadImageFun()">
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Select Category</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" aria-label="Default select example" id="categorySelectDiv">
+                            <option selected>Choose One</option>
+                        </select>
+                    </div>
 
-        <form class="container-fluid p-5">
-            <div class="row mb-3">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Select Recipe</label>
-                <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Choose One</option>
-                    <option value="Category">Category</option>
-                    <option value="Recipe">Recipe</option>
-                </select>
+
                 </div>
-                
-                
-            </div>
-            <div class="row mb-3">
-                <label class=" col-sm-2 col-form-label" for="">Upload Image</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control" id="inputGroupFile01">
+                <div class="row mb-3">
+                    <label class=" col-sm-2 col-form-label" for="">Upload Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="inputGroupFile01" name="category">
+                    </div>
                 </div>
-            </div>
-             
-            <button type="submit" class="btn btn-success">Upload</button>
-        </form>
+
+                <input type="submit" class="btn btn-success"/>
+            </form>
+        </div>
+        
     </div>
     
 

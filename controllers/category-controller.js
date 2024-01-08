@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Category = require("../models/category-model");
 const Recipe = require("../models/recipe-model");
 
-
 //getting all categories list
 const getAllCategories = async (req, res, next) => {
   try {
@@ -71,12 +70,15 @@ const singleCategory = async (req, res, next) => {
 //update a single category by id
 const updateCategory = async (req, res, next) => {
   try {
-
     const categoryId = req.params.id;
     const updates = req.body;
     const options = { new: true };
     //updating category info
-    const result = await Category.findByIdAndUpdate(categoryId, updates, options);
+    const result = await Category.findByIdAndUpdate(
+      categoryId,
+      updates,
+      options
+    );
     if (!result) {
       next(createError(404, "Category does not exist"));
       return;
@@ -84,7 +86,10 @@ const updateCategory = async (req, res, next) => {
 
     // updating category name in all the recipe
     if (req.body.name) {
-      const updateRecipe = await Recipe.updateMany({}, { $set: { "category": req.body.name } })
+      const updateRecipe = await Recipe.updateMany(
+        {},
+        { $set: { category: req.body.name } }
+      );
     }
     res.send(result);
   } catch (error) {
@@ -101,9 +106,8 @@ const updateCategory = async (req, res, next) => {
 const deleteCategory = async (req, res, next) => {
   const categoryId = req.params.id;
   try {
-
     //deleting all recipe of a given category
-    const deleteRecipes = await Recipe.deleteMany({ "c_id": categoryId })
+    const deleteRecipes = await Recipe.deleteMany({ c_id: categoryId });
 
     //deleting a category by category id
     const result = await Category.findByIdAndDelete(categoryId);

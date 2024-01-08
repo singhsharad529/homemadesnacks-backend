@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Static Middleware
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static("uploads"));
 
 //routes
 app.use("/image-upload", ImageRoute);
@@ -42,7 +43,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 //server listening on 5000 port
 app.listen(PORT, () => {
   console.log("Server is starting on port ", PORT);
