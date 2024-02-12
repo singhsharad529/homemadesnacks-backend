@@ -35,7 +35,7 @@ GET http://localhost:5000/
 
 ## Recipes Routes...........
 ### Get all recipe of a specific category(category id)
-GET http://localhost:5000/recipes/category/64fddd21cd4767c497b359f0
+GET http://localhost:5000/recipes/category/64fddd41cd4767c497b359f2
 
 ### Creating a recipe with a category details
 POST http://localhost:5000/recipes/65736c2b796908f342769ac
